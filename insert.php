@@ -16,9 +16,9 @@ $teste->execute();
 
 
 if ($teste) {
-    echo "deu bom";
-} else {
-    echo "deu ruim";
+    echo '<meta http-equiv="refresh" content="2; URL=index.html">';
+} else{
+    echo "Erro ao inserir os dados!";
 }
 
 

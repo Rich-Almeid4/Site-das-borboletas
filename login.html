@@ -4,14 +4,37 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
-    <script src="jquery-3.7.0.min.js"></script>      
+    <script src="jquery-3.7.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+      $("#click").click(function() {
+          
+          var user = $("#user").val();
+          var pass = $("#pass").val();
+
+          $.ajax({
+              url: "entrar.php",
+              type: "POST",
+              data: { nome: user, senha: pass },               
+              dataType: "html"
+          }).done(function(resposta) {
+             $("p").html(resposta);
+          }).fail(function(jqXHR, textStatus) {
+              alert("Request failed: " + textStatus);
+          })
+      });
+  });
+
+</script>      
 </head>
 <body>
   <div class="log">
   <texto>Fazer Login</texto> 
-    <input type="text" placeholder="Nome de usuario" class="nome"><input type="password" class="senha" placeholder="senha">
-    <button class="entra">Entrar</button>
+    <input type="text" id="user" placeholder="Nome de usuario" class="nome">
+    <input type="password" id="pass" class="senha" placeholder="senha">
+    <button class="entra" id="click">Entrar</button>
     <a href="cadastro.html"><button class="cadastro">Cadastrar</button></a>
-</div>
+<p></p>
+  </div>
 </body>
 </html>

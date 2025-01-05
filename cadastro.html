@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script src="jquery-3.7.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("button").click(function() {
+                
+                var nome = $("#nome").val();
+                var email = $("#email").val();
+                var senha = $("#senha").val();
+
+                $.ajax({
+                    url: "insert.php",
+                    type: "POST",
+                    data: "nome="+nome+"&email="+email+"&senha="+senha,
+                    dataType: "html"
+                }).done(function(resposta) {
+                    console.log(resposta);
+                }).fail(function(jqXHR, textStatus) {
+                    console.log("Request failed: " + textStatus);
+                })
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Conteúdo Dinâmico</title>
+</head>
+<body>
+    <div class="log">
+        <texto>Criar Conta</texto>
+    <input type="text" class="nome" placeholder="Nome de usuário" id="nome">
+    <input type="text" class="email" id="email" placeholder="email">
+    <input id="senha" type="text" class="senha" placeholder="senha">
+    <button class="entra">Criar conta</button>
+</div>
+</body>
+</html>
